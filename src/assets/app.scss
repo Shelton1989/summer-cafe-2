@@ -1,0 +1,16 @@
+.top-bar {
+    color: white;
+    background-color: #1b1c1d;
+    width: 100%;
+    min-height: 3vh;
+}
+
+.ui.menu .item {
+    color: rgba(255,255,255,.5)!important;
+    font-size: 0.85rem;
+    margin: 0!important;
+}
+
+.ui.menu .item:hover {
+    color: rgba(255,255,255, 1)!important;
+}
