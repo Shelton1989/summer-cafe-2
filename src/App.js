@@ -2,52 +2,49 @@ import React from 'react';
 import logo from './logo.svg';
 import './assets/app.scss';
 
+import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
+
 import 'semantic-ui-css/semantic.min.css'
 
-import TopBar from './components/TopBar'
-import LeftBar from './components/LeftBar'
-import BottomBar from './components/BottomBar'
-
-import { 
-  ReflexContainer,
-  ReflexElement,
-  ReflexSplitter
-} from 'react-reflex';
-
 import 'react-reflex/styles.css';
+
+import 'devextreme/dist/css/dx.common.css';
+import 'devextreme/dist/css/dx.material.blue.dark.compact.css';
+
+import LoginView from './views/LoginView';
+import HomeView from './views/HomeView';
 
 function App() {
   return (
     <div className="App">
-      <TopBar />
-      <LeftBar />
-      <BottomBar />
-      <Panes />
+        <BrowserRouter>
+          <Switch >
+            <Route path='/login' component={LoginView} />
+            <Route exact path='/' render={() => {
+              return <Redirect to={{pathname: '/login'}} />
+            }} />
+            <PrivateRoute path='/dashboard' component={HomeView} />
+          </Switch>
+        </BrowserRouter>
     </div>
   );
 };
 
-function Panes() {
+const PrivateRoute = ({component: Component, ...rest}) => {
+  const token = localStorage.getItem('token')
   return (
-    <div className='panes'>
-      <ReflexContainer orientation='vertical'>
-        <ReflexElement className='explorer' flex={0.1}>
-          <div>Test</div>
-        </ReflexElement>
-        <ReflexSplitter propagate={true} />
-        <ReflexElement className='content' flex={0.9}>
-          <ReflexContainer orientation='horizontal'>
-            <ReflexElement className='MainPanel' flex={0.8}>
-              <div>MainPanel</div>
-            </ReflexElement>
-            <ReflexSplitter propagate={true} />
-            <ReflexElement className='Terminal'>
-              <div>Terminal</div>
-            </ReflexElement>
-          </ReflexContainer>
-        </ReflexElement>
-      </ReflexContainer>
-    </div>
+    <Route {...rest} render={(props)=>{
+      if (true) {
+        return <Component {...props}/>
+      } else {
+        return (<Redirect to={
+          {
+            pathname: '/login',
+            from: props.location.pathname
+          }
+        }></Redirect>)
+      }
+    }}/>
   )
 }
 

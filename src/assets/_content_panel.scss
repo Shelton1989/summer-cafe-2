@@ -1,0 +1,35 @@
+.content {
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.explorer {
+    height: 100vh;
+    padding: 30px 0 22px 52px;
+}
+
+.reflex-container.vertical > .reflex-splitter {
+    border-right: 1px solid #848484!important;
+    border-right: 1px solid #848484!important;
+}
+
+.reflex-container.vertical > .reflex-splitter:hover, .reflex-container.vertical > .reflex-splitter.active {
+    border-right: 1px solid #424242!important;
+    border-right: 1px solid #424242!important;
+}
+
+.reflex-container > .reflex-splitter {
+    background-color: #727272!important;
+    z-index: 1!important;
+}
+
+.pane-top-bar {
+    height: 35px;
+    padding-left: 25px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #232323;
+}

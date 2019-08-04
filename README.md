@@ -1,4 +1,12 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## About the project
+
+### Routes
+
+After installing and setting up the project, the project will redirect to home.
+
+The dashboard is available at http://localhost:3000/dashboard
+
+The login page is available at http://localhost:3000/login
 
 ## Set Up
 
